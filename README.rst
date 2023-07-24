@@ -1,4 +1,6 @@
-Published at https://tanzu-install-annotated.readthedocs.io/en/latest/index.html
+published at https://windowsnetworking.readthedocs.io/  
+
+
 
 # Contributions
 
@@ -13,6 +15,13 @@ If you want to add other pages, though, you may do so !
 # Interesting caveates 
 
 Put these in the Notes.md page
+
+# Maintaining
+
+Make sure to add
+readthedocs.org/api/v2/webhook/windowsnetworking/245567/
+
+
 
 # Contact
 
