@@ -1,1 +1,1 @@
-# HNS API
+# Host Networking Service API
