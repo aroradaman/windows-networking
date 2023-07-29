@@ -1,4 +1,4 @@
-## diffstore
+## kpng-diffstore
 DiffStore is a powerful tool provided by KPNG `sigs.k8s.io/kpng/diffstore` for tracking incremental changes and computing deltas after processing a full state.
 
 #### Defining diff-store
