@@ -1,4 +1,4 @@
-# Windows Networking
+# k8s
 
 Welcome to our site about windows networking! This is a community effort, outside of the CNCF, and is written as a collection
 of technical articles about the details of the kube proxy on windows which we discovered, while porting it over to KPNG.
