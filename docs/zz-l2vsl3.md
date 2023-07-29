@@ -1,6 +1,14 @@
 # l2l3
 
 L2 and L3 cnis are confusing for people.  For example antrea is L2 (it uses a switch) vs calico is a l3 cni (IPIP).
+Kind net is an example of a popular bridge  CNI https://www.tkng.io/cni/kindnet/ , that relies on layer2 network connectivity.
+Its important to know the difference between layer2 connectivity (like what kind or l2bridge relies on) vs l3 (which is what calico relies on).
+
+L3 is obviously more flexible.  I think... l2 tech is based on older stuff that works well, but probably isnt as reliable in the cloud world, bc
+you cant as easily make gaurantees about the low level network connectivity of things.
+
+That said things like OVS and L2 bridge are still used in the cloud, l2 bridge makes up the local part of windows CNIs in the cloud, which rely on otherthings
+for higher level routing..... 
 
 ## Why windows CNIs are different
 
