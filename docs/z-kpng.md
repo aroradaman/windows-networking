@@ -1,4 +1,4 @@
-# win-kpng
+# kpng-win
 
 ### KPNG
 Kube-Proxy Next-Generation dec ouples the existing in-tree kube-proxy from proxy backends - userspace, iptabes and ipvs with option of running these backends in completely separate processes, or together with shared memory.
