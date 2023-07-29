@@ -12,6 +12,11 @@ high bar for PRs!
 
 ## Windows Services
 
+One of the main topics here is HNS, which is used by both windows CNIs and kube proxys. 
+
+- Windows CNIs make HNS endpoints
+- Windows Kube proxy implementations make HNS Loadbalancers (other than antrea, which uses OVS instead)
+
 As a first example, its interesting to consider the metadata associated with a kube proxy service in windows:
 
 ```
