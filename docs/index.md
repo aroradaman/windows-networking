@@ -15,21 +15,20 @@ high bar for PRs!
 As a first example, its interesting to consider the metadata associated with a kube proxy service in windows:
 
 ```
-// todo @daman replace this !
 type serviceInfo struct {
 	*proxy.BaseServicePortInfo
 	targetPort             int
 	externalIPs            []*externalIPInfo
 	loadBalancerIngressIPs []*loadBalancerIngressInfo
-	hnsID                  string
-	nodePorthnsID          string
+	hnsID                  string <-- unique to windows
+	nodePorthnsID          string <-- unique to windows
 	policyApplied          bool
 	remoteEndpoint         *endpointsInfo
-	hns                    HostNetworkService
+	hns                    HostNetworkService <-- unique to windows , similar to ipvs dummy interface
 	preserveDIP            bool
-	localTrafficDSR        bool
+	localTrafficDSR        bool <-- unique to windows
 	internalTrafficLocal   bool
-	winProxyOptimization   bool
+	winProxyOptimization   bool <-- unique to windows
 }
 ```
 
