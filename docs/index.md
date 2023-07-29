@@ -1,11 +1,16 @@
 # k8s
 
-Welcome to our site about windows networking! This is a community effort, outside of the CNCF, and is written as a collection
-of technical articles about the details of the kube proxy on windows which we discovered, while porting it over to KPNG.
-
 The main focus of this site is biased around the kube-proxy, but we will try to add more and more content over time, as its 
 not possible to understand the kube proxy w/o also thinking about things like network policies, CNIs, L2 and L3 networks, DRS, OVS, 
 and so on.
+
+## Contributors !
+
+Please make PRs to https://github.com/aroradaman/windows-networking/ if you want to help us with this site, or file issues.
+Our goal is to make windows on kubernetes networking problems fun to work on and easy to document.  We dont have a particularly
+high bar for PRs! 
+
+## Windows Services
 
 As a first example, its interesting to consider the metadata associated with a kube proxy service in windows:
 
@@ -28,18 +33,33 @@ type serviceInfo struct {
 }
 ```
 
-TODO add detailed definitions of these fields here... and how they're used.
+## A windows pod
 
-## Contributors !
+A windows pod is just like a linux pod:
 
-Please make PRs to https://github.com/aroradaman/windows-networking/ if you want to help us with this site, or file issues.
-Our goal is to make windows on kubernetes networking problems fun to work on and easy to document.  We dont have a particularly
-high bar for PRs! 
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: iis
+  labels:
+    name: iis
+spec:
+  containers:
+    - name: iis
+      image: microsoft/iis:windowsservercore-1709
+      ports:
+        - containerPort: 80
+  nodeSelector:
+    "kubernetes.io/os": windows
+```
+
+.... the difference is in the networking and storage .... 
 
 
-## A simple view of pod networks
+## A simple view of pod networks (linux)
 
-Before we get into windows on K8s, lets look at the basics of the k8s networking model:
+Pod networks are important b/c they are the basis for k8s services.  Before we get into windows on K8s, lets look at the basics of the k8s networking model:
 
 On windows, or linux, the kube proxys purpose in life is to look at pods, services, and endpoints, and write low level networking rules that make it so that, when you hit a service,
 you are forwarded to the underlying pod backing it: 
