@@ -10,9 +10,9 @@ Please make PRs to https://github.com/aroradaman/windows-networking/ if you want
 Our goal is to make windows on kubernetes networking problems fun to work on and easy to document.  We dont have a particularly
 high bar for PRs! 
 
-## Windows Services
+## Windows Networking
 
-One of the main topics here is HNS, which is used by both windows CNIs and kube proxys. 
+A quick first look at windows networking for the impatient - One of the main topics here is HNS, which is used by both windows CNIs and kube proxys. 
 
 - Windows CNIs make HNS endpoints
 - Windows Kube proxy implementations make HNS Loadbalancers (other than antrea, which uses OVS instead)
