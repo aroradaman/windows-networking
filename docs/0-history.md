@@ -1,4 +1,4 @@
-# win-net-history
+# history
 
 HCN and HCS are the backbone of K8s networking.  We'll contrast them w/ WMI and Netsh in a second for you old school windows admins.
 But first lets get straight to the point.
