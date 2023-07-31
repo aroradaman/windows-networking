@@ -1,5 +1,28 @@
 # l2l3
 
+TLDR if you don't want to read all of this:
+
+- There are L2 CNI options in both linux and windows.
+- Calico is a L3 CNI, but antrea is an L2 cni.
+- Clouds use L2 CNIs under the hood and glue them together via networky magic for x-node communication. 
+
+On Windows, 
+- the L2 bridge CNI assigns MAC address -> container in same L2 bridge network.
+- SIMPLE, less stress on network switches, NO NEED for learning MAC addresses of short-lived containers.
+- SAME NODE comms = direct using MAC addresses,
+- CROSS NODE comms -> IP-based routing and NAT mechanisms.
+- NO NETWORK NAMESPACE: win containers do not have network namespaces like Linux containers,
+- BECAUSE of that the CNI logic replaces the need for Linux network programming with calls to the Host Network Service (HNS) on Windows.
+
+On Linux:
+- L2 bridge networking is typically achieved using CNI plugins
+- PLUGINS: MacVLan / Bridge... each container receives its unique MAC address IN network namespace.
+- Network Namespace: UNIQUE per pod unlike windows
+- SAME NODE node can communicate directly using unique MAC addresses like windows
+- SAME HOST L2 containers are isolated by netNS.  NOT the case in windows.
+
+## Why bother learning about l2 and l3 networks ?
+
 L2 and L3 cnis are confusing for people.  For example antrea is L2 (it uses a switch) vs calico is a l3 cni (IPIP).
 Kind net is an example of a popular bridge  CNI https://www.tkng.io/cni/kindnet/ , that relies on layer2 network connectivity.
 Its important to know the difference between layer2 connectivity (like what kind or l2bridge relies on) vs l3 (which is what calico relies on).
