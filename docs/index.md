@@ -8,7 +8,7 @@ and so on.
 
 This is a grass roots effort !!!!! 
 
-*Please make PRs to https://github.com/aroradaman/windows-networking/* and help us !!!!!!!!
+*Please make PRs to the [Windows-Networking Github repo](https://github.com/aroradaman/windows-networking/)  and help us !!!!!!!!
 
 if you want to help us with this site, or file issues.
 Our goal is to make windows on kubernetes networking problems fun to work on and easy to document.  We dont have a particularly
