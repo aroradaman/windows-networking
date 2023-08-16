@@ -63,6 +63,36 @@ Add-HcnEndpoint -Endpoint @{
 
 ### Host Compute LoadBalancer
 
+The Kube Proxy uses a custom Loadbalancer API that the HCN defines.  You can see that it gets
+activated if a service has session affinity
+```
+353   if flags.isIPv6 {
+354     lbFlags |= LoadBalancerFlagsIPv6
+355   }
+356
+357   lbDistributionType := hcn.LoadBalancerDistributionNone
+358
+```
+Next, we check the sessionAffinity flag below... and CHANGE the *lbDistributionType*... to 
+distribute VIA source IP.  This routes the incoming IP address consistently to the same backend.
+```
+359   if flags.sessionAffinity {
+360     lbDistributionType = hcn.LoadBalancerDistributionSourceIP
+361   }
+362
+363   loadBalancer := &hcn.HostComputeLoadBalancer{
+364     SourceVIP: sourceVip,
+365     PortMappings: []hcn.LoadBalancerPortMapping{
+366       {
+367         Protocol:         uint32(protocol),
+368         InternalPort:     internalPort,
+369         ExternalPort:     externalPort,
+370         DistributionType: lbDistributionType,
+371         Flags:            lbPortMappingFlags,
+372       },
+373     },
+```
+
 An HCN load balancer is an entity that's used to represent a host compute network load balancer. Load balancers allow you to have load balanced host compute network endpoints.
 So, lets now look at an example of how this would work in a kube proxy. Note the other examples showed how to make pods / networks, which is more of a CNI thing - but the kube proxy, focuses on the loadbalancing part:
 
